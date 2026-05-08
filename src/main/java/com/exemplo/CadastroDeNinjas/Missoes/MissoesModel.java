@@ -2,11 +2,17 @@ package com.exemplo.CadastroDeNinjas.Missoes;
 
 import com.exemplo.CadastroDeNinjas.Ninjas.NinjaModel;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
 @Table(name = "tb_missoes")
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class MissoesModel {
 
     @Id
@@ -20,29 +26,6 @@ public class MissoesModel {
     private List<NinjaModel> ninjas;
 
 
-    public MissoesModel() {
-    }
 
-    public MissoesModel(String dificuldade, String descricao) {
-        this.dificuldade = dificuldade;
-        this.descricao = descricao;
-
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public String getDificuldade() {
-        return dificuldade;
-    }
-
-    public void setDificuldade(String dificuldade) {
-        this.dificuldade = dificuldade;
-    }
 
 }
