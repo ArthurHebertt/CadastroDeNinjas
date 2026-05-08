@@ -19,8 +19,12 @@ public class NinjaModel {
     @Id // indica que o atributo abaixo dele vai ser usado como ID
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Passa estrategia de como o ID vai ser gerado
     private Long id;
+
     private String nome;
+
+    @Column(unique = true) // A coluna passa a ser um item unico
     private String email;
+
     private int idade;
 
     // @ManyToOne um ninja (classe) tem uma unica missão (elemento abaixo)
