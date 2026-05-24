@@ -18,7 +18,10 @@ public class MissoesModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "descrição")
     private String descricao;
+
+    @Column(name = "dificuldade")
     private String dificuldade;
 
      // uma unica missão (a classe) para vários ninjas (elemento abaixo)
