@@ -3,7 +3,7 @@ package com.exemplo.CadastroDeNinjas.Ninjas;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping
+@RequestMapping // dominios
 public class NinjaController {
 
     @GetMapping("/boasvindas")
