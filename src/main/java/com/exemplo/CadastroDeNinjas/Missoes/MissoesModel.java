@@ -1,6 +1,7 @@
 package com.exemplo.CadastroDeNinjas.Missoes;
 
 import com.exemplo.CadastroDeNinjas.Ninjas.NinjaModel;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,6 +28,7 @@ public class MissoesModel {
 
      // uma unica missão (a classe) para vários ninjas (elemento abaixo)
     @OneToMany (mappedBy = "missoes")
+    @JsonIgnore // Ignora a serialização para não causar o erro de looping infinito
     private List<NinjaModel> ninjas;
 
 
