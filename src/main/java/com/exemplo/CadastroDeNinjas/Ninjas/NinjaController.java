@@ -34,9 +34,9 @@ public class NinjaController {
     }
 
     // Mostrar os Ninjas por ID (READ)
-    @GetMapping("/listarID")
-    public String mostratTodosOsNinjasPorId() {
-        return "Mostrar todos os Ninjas por ID";
+    @GetMapping("/listar/{id}")
+    public NinjaModel listarNinjasPorID(@PathVariable Long id) { // PathVariable transforma a variavel que o usuario inserier em parte da rota
+        return ninjaService.listarNinjasPorID(id);
     }
 
     // Alterar dados do ninja (UPDATE)
