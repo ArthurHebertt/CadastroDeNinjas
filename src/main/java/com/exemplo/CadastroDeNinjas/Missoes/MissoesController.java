@@ -2,14 +2,22 @@ package com.exemplo.CadastroDeNinjas.Missoes;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("missoes") // subdominio
+@RequestMapping("/missoes") // subdominio
 public class MissoesController {
 
+    private MissoesService missoesService;
+
+    public MissoesController(MissoesService missoesService) {
+        this.missoesService = missoesService;
+    }
+
     // GET - Mandar uma requisição para mostrar as missoes
-    @GetMapping("/lista")
-    public String listarMissoes() {
-        return "Lista de Missoes";
+    @GetMapping("/listar")
+    public List<MissoesModel> listarMissoes() {
+        return missoesService.listarMissoes();
     }
 
     // POST - Mandar uma requisição para criar missoes
