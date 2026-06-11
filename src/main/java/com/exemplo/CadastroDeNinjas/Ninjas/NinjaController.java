@@ -17,14 +17,14 @@ public class NinjaController {
     }
 
     @GetMapping("/boasvindas")
-    public String boasVindas () {
+    public String boasVindas() {
         return "Essa é minha primeira mensagem nessa rota";
     }
 
     // Adicionar Ninja (CREATE)
     @PostMapping("/criar")
-    public String criarNinja (){
-        return "Ninja Criado";
+    public NinjaModel criarNinja(@RequestBody NinjaModel ninja) {
+        return ninjaService.criarNinja(ninja);
     }
 
     // Mostrar os Ninjas (READ)
