@@ -34,9 +34,9 @@ public class MissoesController {
 
     // DELETE - Mandar requisição para deletar missoes
 
-    @DeleteMapping("/deletar")
-    public String deletarMissao() {
-        return "Missao deletada com sucesso";
+    @DeleteMapping("/deletar/{id}")
+    public void deletarMissao(Long id) {
+         missoesService.deletarMissoes(id);
     }
 
 

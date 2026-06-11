@@ -22,4 +22,9 @@ public class MissoesService {
     public List<MissoesModel> listarMissoes() {
         return missoesRepository.findAll();
     }
+
+    // Deletar missoes
+    public void deletarMissoes(Long id) {
+        missoesRepository.deleteById(id);
+    }
 }
