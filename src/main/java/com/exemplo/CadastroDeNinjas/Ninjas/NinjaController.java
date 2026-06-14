@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 // Criar rotas para o usuario acessar
 @RestController
@@ -13,7 +12,7 @@ import java.util.Optional;
 public class NinjaController {
 
     // Injetando dependencia do Service
-    private NinjaService ninjaService;
+    private final NinjaService ninjaService;
 
     public NinjaController(NinjaService ninjaService) {
         this.ninjaService = ninjaService;
@@ -37,7 +36,6 @@ public class NinjaController {
     public ResponseEntity<List<NinjaDTO>> listaDeNinjas() {
          List<NinjaDTO >lista = ninjaService.listarNinjas();
         return ResponseEntity.ok(lista);
-
     }
 
     // Mostrar os Ninjas por ID (READ)
@@ -64,8 +62,6 @@ public class NinjaController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("Ninja com id: " + id + " não existe");
         }
-
-
     }
 
     // Deletar Ninja (DELETE)
@@ -79,7 +75,4 @@ public class NinjaController {
                     .body("O Ninja com ID " + id + " não foi encontrado");
         }
     }
-
-
-
 }

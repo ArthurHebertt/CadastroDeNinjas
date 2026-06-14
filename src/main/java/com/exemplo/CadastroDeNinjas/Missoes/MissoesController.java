@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping("/missoes") // subdominio
 public class MissoesController {
 
-    private MissoesService missoesService;
+    private final MissoesService missoesService;
 
     public MissoesController(MissoesService missoesService) {
         this.missoesService = missoesService;

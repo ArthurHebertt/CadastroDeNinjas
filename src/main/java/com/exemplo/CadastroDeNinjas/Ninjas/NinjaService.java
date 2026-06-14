@@ -10,9 +10,9 @@ import java.util.stream.Collectors;
 public class NinjaService {
 
     // Injetando dependencia do NinjaRepository
-    private NinjaRepository ninjaRepository;
+    private final NinjaRepository  ninjaRepository;
     // Injetando dependencia do NinjaMapper
-    private NinjaMapper ninjaMapper;
+    private  final NinjaMapper ninjaMapper;
 
     public NinjaService(NinjaRepository ninjaRepository, NinjaMapper ninjaMapper) {
         this.ninjaRepository = ninjaRepository;
