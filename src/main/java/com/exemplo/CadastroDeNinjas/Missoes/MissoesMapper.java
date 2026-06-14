@@ -24,7 +24,7 @@ public class MissoesMapper {
 
         missoesDTO.setId(missoesModel.getId());
         missoesDTO.setDescricao(missoesModel.getDescricao());
-        missoesDTO.setId(missoesModel.getId());
+        missoesDTO.setDificuldade(missoesModel.getDificuldade());
         missoesDTO.setNinja(missoesDTO.getNinja());
 
         return missoesDTO;
