@@ -42,24 +42,24 @@ public class NinjaController {
 
     // Mostrar os Ninjas por ID (READ)
     @GetMapping("/listar/{id}")
-    public ResponseEntity<?> listarNinjasPorID(@PathVariable Long id) { // PathVariable transforma a variavel que o usuario inserier em parte da rota
+    public ResponseEntity<String> listarNinjasPorID(@PathVariable Long id) { // PathVariable transforma a variavel que o usuario inserier em parte da rota
        NinjaDTO ninjasPorId = ninjaService.listarNinjasPorID(id);
 
-       if (ninjasPorId !=null) {
-           ResponseEntity.ok("Ninja encontrado: " + ninjasPorId.getNome());
+       if (ninjasPorId !=null)   {
+           return ResponseEntity.ok("Ninja encontrado: " + ninjasPorId.getNome());
        } else {
            return ResponseEntity.status(HttpStatus.NOT_FOUND)
                    .body("Ninja com id: " + id + " não existe");
-       } return null;
+       }
     }
 
 
     // Alterar dados do ninja (UPDATE)
     @PutMapping("/alterar/{id}")
     public ResponseEntity<?> alterarNinjaPorId(@PathVariable Long id, @RequestBody NinjaDTO ninjaAtualizado){
-        NinjaDTO ninjaDTO = ninjaService.atualizarNinja(id, ninjaAtualizado);
-        if (ninjaDTO !=null) {
-            return ResponseEntity.ok(ninjaDTO);
+        NinjaDTO ninjaAlterado = ninjaService.atualizarNinja(id, ninjaAtualizado);
+        if (ninjaAlterado !=null) {
+            return ResponseEntity.ok(ninjaAlterado);
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("Ninja com id: " + id + " não existe");
