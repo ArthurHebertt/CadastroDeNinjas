@@ -1,0 +1,27 @@
+<
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Tabela de Missões</title>
+</head>
+<body>
+    <h1>Lista de missões</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Diculdade</th>
+            <th>Descrição</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each = "missoes : ${missoes}">
+                <td th:text = "${missoes.id}"></td>
+                <td th:text = "${missoes.dificuldade}"></td>
+                <td th:text = "${missoes.descricao}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Tabela de Ninjas</title> <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    min-height: 100vh;
+    padding: 40px;
+    color: white;
+}
+
+/* Cabeçalho */
+
+.topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+/* Botão adicionar */
+
+.btn-adicionar {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    padding: 8px 14px;
+
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+    text-decoration: none;
+
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.btn-adicionar:hover {
+    transform: translateY(-3px) scale(1.02);
+
+    box-shadow:
+        0 15px 35px rgba(37, 99, 235, 0.45),
+        inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+.btn-adicionar:active {
+    transform: translateY(0);
+}
+
+.btn-adicionar:hover {
+    transform: translateY(-3px) scale(1.02);
+
+    box-shadow:
+        0 15px 35px rgba(37, 99, 235, 0.45),
+        inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+.btn-adicionar:active {
+    transform: translateY(0);
+}
+/* Tabela */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    color: #333;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+thead {
+    background: #2563eb;
+    color: white;
+}
+
+th {
+    padding: 18px;
+    text-align: left;
+    font-size: 15px;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid #e5e7eb;
+    vertical-align: middle;
+}
+
+tbody tr:hover {
+    background-color: #f8fafc;
+    transition: 0.3s;
+}
+
+/* Imagem */
+
+img {
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #2563eb;
+}
+
+/* Ações */
+
+.acoes {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.btn-ver {
+    background: #22c55e;
+}
+
+.btn-editar {
+    background: #f59e0b;
+}
+
+.btn-deletar {
+    background: #ef4444;
+}
+
+/* Responsivo */
+
+@media (max-width: 900px) {
+    .topo {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+</style>
+</head>
+<body>
+<h1>Lista de ninjas</h1>
+<h2> <a th:href="@{/ninjas/ui/adicionar}" class="btn-adicionar">
+    Adicionar Ninja
+</a> </h2>
+<table>
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Imagem</th>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>Email</th>
+            <th>Rank</th>
+            <th>Missoes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each = "ninja: ${ninjas}">
+            <td th:text= "${ninja.id}" >  </td>
+            <td><img th:src="${ninja.imgUrl}" width="100" height="100"></td>
+            <td th:text= "${ninja.nome}" >  </td>
+            <td th:text= "${ninja.idade}"></td>
+            <td th:text= "${ninja.email}"></td>
+            <td th:text= "${ninja.rank}"></td>
+            <td>
+                <span th:if="${ninja.missoes}" > <span th:text="${ninja.missoes.descricao}"></span>, Dificuldade: <span th:text="${ninja.missoes.dificuldade}"> </span></span>
+                <span th:if="${ninja.missoes == null}"> Sem missões cadastradas para o Ninja </span>
+            </td>
+            <td>
+                <div class="acoes">
+                    <a th:href="@{/ninjas/ui/listar/{id}(id=${ninja.id})}" class="btn btn-ver">Ver detalhes</a>
+
+                    <a th:href="@{/ninjas/ui/#/{id}(id=${ninja.id})}" class="btn btn-editar">Alterar</a>
+
+                    <a th:href="@{/ninjas/ui/deletar/{id}(id=${ninja.id})}"
+                       class="btn btn-deletar">
+                        Deletar
+                    </a>
+                </div>
+            </td>
+
+    </tr>
+
+    </tbody>
+</table>
+
+</body>
+</html>

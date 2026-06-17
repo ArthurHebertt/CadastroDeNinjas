@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes do Ninja</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .card {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            width: 220px;
+            border-radius: 10px;
+        }
+
+        .info {
+            margin: 12px 0;
+            font-size: 18px;
+        }
+
+        .titulo {
+            font-weight: bold;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 18px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        .btn:hover {
+            background: #1d4ed8;
+        }
+
+        .secao {
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body> <h1 style="color:red">TESTE 123456</h1>
+
+<div class="card">
+
+    <h1 th:text="${ninja.nome}">Nome do Ninja</h1>
+
+    <img th:src="${ninja.imgUrl}" alt="Imagem do Ninja">
+
+    <div class="info">
+        <span class="titulo">ID:</span>
+        <span th:text="${ninja.id}"></span>
+    </div>
+
+    <div class="info">
+        <span class="titulo">Email:</span>
+        <span th:text="${ninja.email}"></span>
+    </div>
+
+    <div class="info">
+        <span class="titulo">Idade:</span>
+        <span th:text="${ninja.idade}"></span>
+    </div>
+
+    <div class="info">
+        <span class="titulo">Rank:</span>
+        <span th:text="${ninja.rank}"></span>
+    </div>
+
+    <div class="secao">
+        <h2>Missão</h2>
+
+        <div th:if="${ninja.missoes != null}">
+
+            <div class="info">
+                <span class="titulo">ID da Missão:</span>
+                <span th:text="${ninja.missoes.id}"></span>
+            </div>
+
+            <div class="info">
+                <span class="titulo">Descrição:</span>
+                <span th:text="${ninja.missoes.descricao}"></span>
+            </div>
+
+            <div class="info">
+                <span class="titulo">Dificuldade:</span>
+                <span th:text="${ninja.missoes.dificuldade}"></span>
+            </div>
+
+        </div>
+
+        <div th:if="${ninja.missoes == null}">
+            Este ninja não possui missão cadastrada.
+        </div>
+
+    </div>
+
+    <a th:href="@{/ninjas/ui/listar}" class="btn">
+        Voltar para Lista
+    </a>
+
+</div>
+
+</body>
+</html>
