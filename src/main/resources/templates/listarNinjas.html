@@ -194,7 +194,7 @@ img {
                 <div class="acoes">
                     <a th:href="@{/ninjas/ui/listar/{id}(id=${ninja.id})}" class="btn btn-ver">Ver detalhes</a>
 
-                    <a th:href="@{/ninjas/ui/#/{id}(id=${ninja.id})}" class="btn btn-editar">Alterar</a>
+                    <a th:href="@{/ninjas/ui/buscarParaEditar/{id}(id=${ninja.id})}" class="btn btn-editar">Editar</a>
 
                     <a th:href="@{/ninjas/ui/deletar/{id}(id=${ninja.id})}"
                        class="btn btn-deletar">

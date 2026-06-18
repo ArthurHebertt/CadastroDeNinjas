@@ -57,6 +57,24 @@ public class NinjaControllerUI {
        return "redirect:/ninjas/ui/listar";
     }
 
+    @GetMapping("/buscarParaEditar/{id}")
+    public String buscarNinjaParaEditar(@PathVariable Long id ,Model model){
+        NinjaDTO ninja = ninjaService.listarNinjasPorID(id);
+        if (ninja !=null) {
+            model.addAttribute("ninja",ninja);
+            return "editarNinja";} else { return "redirect:/ninjas/ui/listar";
+            }
+    }
+
+    @PostMapping ("/{id}/atualizar")
+    public String atualizarninja(@PathVariable Long id, @ModelAttribute NinjaDTO ninja){
+
+        ninjaService.atualizarNinja(id,ninja);
+
+        return  "redirect:/ninjas/ui/listar";
+    }
+
+
 
     @GetMapping("/teste")
     public String teste() {
